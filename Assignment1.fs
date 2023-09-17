@@ -1,4 +1,5 @@
 ﻿(*
+  
 Implement in F# a system that calculates how much commission someone has earned, 
 based on what they’ve bought and sold for a cosmetics company. You'll find the 
 specification below:
@@ -73,11 +74,9 @@ module Employees =
     let sell (employee: Employee) (product: Products.Product) (quantity: int) =
         { employee with Sold = employee.Sold + Products.getSellingPrice product * float quantity }
     let getCommission employee =
-        let profit = employee.Sold - employee.Bought
-        if profit > 0.0 then
-            employee.Name, profit * 0.35
-        else
-            employee.Name, 0.0
+        match employee.Sold - employee.Bought with
+        | profit when profit > 0.0 -> (employee.Name, profit * 0.35)
+        | _ -> (employee.Name, 0.0)
 
 module Test =
     
