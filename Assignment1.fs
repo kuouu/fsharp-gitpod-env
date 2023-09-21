@@ -1,45 +1,4 @@
-﻿(*
-  
-Implement in F# a system that calculates how much commission someone has earned, 
-based on what they’ve bought and sold for a cosmetics company. You'll find the 
-specification below:
-
-- There are two attributes that can be associated with a product: colour and brand.
-- Catalog is reflected as a composition of types: colour (red, pink, violet, blue, 
-  black), brand (Revlon, Kiko), product (lipstick, nail-polish, mascara).
-- Products have different varieties: lipsticks can have different colours and brands; 
-  nail polish comes in different colours. Mascara comes in only one variety: black, 
-  no brand.
-- Pricing function is based on a fixed brand/colour/product combination provided below 
-  and returns a product cost.
-- Selling price function adds 35% mark up for each product.
-- Each employee has a name, a total value of bought goods as well as a total value of 
-  sold goods associated.
-- System allows to create a new employee with a given name and the value of sold and 
-  bought items equal to zero.
-- An employee can buy or sell n units of a given product.
-- Commission calculation is performed per employee, based on the profits made (value 
-  of items sold - value of items bought) and the flat commission rate (35%). The 
-  function should return the name of the salesperson and their commission (except if 
-  it the profit is negative - the commission is then 0).
-
-For testing purposes, add lines of code that simulate the scenario where a sales person 
-called "Andrew" is employed and executed the following transactions:
-
-1) bought 5 red Revlon lipsticks
-2) bought 18 mascaras
-3) bought 3 black nail polish
-13.99 * 5 + 7.99 * 18 + 8.99 * 3 = 240.74
-4) sold 3 red Revlon lipsticks
-5) sold 3 black nail polish
-6) sold 16 mascaras
-(13.99 * 3 + 8.99 * 3 + 7.99 * 16) * 1.35 = 265.653
-
-(265.653 - 240.74) * 0.35 = 24.913
-
-*)
-
-namespace assignment1
+﻿namespace assignment1
 
 module Products = 
 
