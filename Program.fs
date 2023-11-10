@@ -45,3 +45,34 @@ module Order =
                 storeTransactionHistory orderResult
         | _ -> // OrdersPartiallyFulfilled
             placeOrder {order with Amount = order.Amount - orderResult.profit} 
+
+type Exchange = {
+    Name: string
+    Url: string
+}
+
+module CrossTradedCurrencyPair =
+    let exchangeList = [
+        {Name = "Bitfinex"; Url = "https://www.bitfinex.com/"};
+        {Name = "Kraken"; Url = "https://www.kraken.com/"};
+        {Name = "Bitstamp"; Url = "https://www.bitstamp.net/"}
+    ]
+    let retrieveCryptoCurrencyPairListFromExchanges (exchange: Exchange)   = 
+        printfn "Crypto currency pair list retrieved from %s" exchange.Name
+        let fakeCryptoPairs = ["ETH-USD"; "BTC-USD"; "CHZ-USD"]
+        fakeCryptoPairs
+    let identifyCommonCrossTradedCurrencyPair (pairs: list<list<string>>) = 
+        List.reduce (
+            fun (acc: string list) (currentSet: string list) -> 
+                Set.toList <| Set.intersect (Set.ofList acc) (Set.ofList currentSet)
+        ) pairs
+    let storeCrossTradedCurrencyPair (pairs: string list) =
+        printfn "Cross traded currency pair stored"
+    let identifyCrossTradedCurrencyPair = 
+        // RetrieveCryptoCurrencyPairListFromExchanges
+        let crossTradedCurrencyPairs = 
+            List.map (fun exchange -> retrieveCryptoCurrencyPairListFromExchanges exchange) exchangeList
+        // IdentifyCommonCrossTradedCurrencyPair
+        let crossTradedPairs = identifyCommonCrossTradedCurrencyPair crossTradedCurrencyPairs
+        // StoreCrossTradedCurrencyPair
+        storeCrossTradedCurrencyPair crossTradedPairs
