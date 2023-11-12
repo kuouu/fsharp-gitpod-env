@@ -76,3 +76,41 @@ module CrossTradedCurrencyPair =
         let crossTradedPairs = identifyCommonCrossTradedCurrencyPair crossTradedCurrencyPairs
         // StoreCrossTradedCurrencyPair
         storeCrossTradedCurrencyPair crossTradedPairs
+
+type CryptoQuote = {
+    Ev: string
+    Pair: string
+    Bp: float
+    Bs: float
+    Ap: float
+    As: float
+    T: int64
+    X: int
+    R: int64
+}
+
+module realtimeMarketFeed =
+    let retriveTopNPairs (n: int) =
+        printfn "Top %d pairs retrieved" n
+        let fakePairs = ["ETH-USD"; "BTC-USD"; "CHZ-USD"]
+        fakePairs
+    let subscribeTopNCurrencyPairMarketFeed (pairs: string list) =
+        // connect to websocket
+        printfn "Market feed subscribed"
+        // authenticate
+        printfn "Market feed authenticated"
+        // subscribe to pairs
+        printfn "Market feed subscribed to pairs"
+    let calculateCurrencyPairSpread =
+        while true do
+            printfn "get quote"
+            let quote = {Ev = "Q"; Pair = "ETH-USD"; Bp = 100.0; Bs = 100.0; Ap = 100.0; As = 100.0; T = 0L; X = 0; R = 0L}
+        printfn "Arbitrage Opportunity Detected"
+
+    let monitorMarketFeed (nPairs: int, minimal: int) = 
+        // RetrieveTopNHistoricalArbitrageCurrencyPair
+        let topNCurrencyPairs = retriveTopNPairs nPairs
+        // SubscribeTopNCurrencyPairMarketFeed
+        subscribeTopNCurrencyPairMarketFeed topNCurrencyPairs
+        // CalculateCurrencyPairRealtimeSpread
+        calculateCurrencyPairSpread
